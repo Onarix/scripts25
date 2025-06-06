@@ -1,0 +1,1 @@
+Tic Tac Toe in Bash – run the script in your terminal, choose game mode, then enter numbers 1–9 to place your mark on the board. Type S to save and quit, or Q to quit without saving. You can resume a saved game from the main menu.
