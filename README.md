@@ -7,3 +7,46 @@ https://github.com/Onarix/scripts25/commit/34217d7998cbbc9d5f646ac341e650c016418
 
 Kod folder: 1.tictactoe
 #
+
+**Zadanie 2** Sklep ReactJS + NodeJS
+
+Wszystkie wymagania: https://github.com/Onarix/scripts25/commit/0decd0961558abea6ceecbaf42500318cc78dcf3
+
+:white_check_mark: 3.0 – Podstawowe endpointy w Node.js (Express)
+
+```
+GET /api/products
+
+GET /api/categories
+
+POST /api/transactions
+```
+To są podstawowe REST API endpointy do obsługi sklepu.
+
+:white_check_mark: 3.5 – Dane zapisywane w bazie danych po stronie Node.js
+Produkty i kategorie są w SQLite.
+
+Transakcje są zapisywane w bazie przez Node.js po stronie backendu.
+
+:white_check_mark:  4.0 – Axios wykorzystywany do wywołań
+Frontend (React) używa axios.post i axios.get do komunikacji z backendem.
+
+Przykład: wysyłanie transakcji przez axios.post('/transactions', {...})
+
+:white_check_mark:  4.5 – Koszyk i płatność działają na React Hook
+Koszyk jest zarządzany przez useState.
+
+Funkcja pay() działa na stanie komponentu → React Hook.
+
+:white_check_mark: 5.0 – Konfiguracja CORS
+Backend (Node.js) ma:
+
+```js
+const cors = require('cors');
+app.use(cors());
+```
+
+Frontend wywołuje zapytania na odpowiedni adres (np. http://localhost:3001).
+
+CORS działa i jest skonfigurowany.
+#
