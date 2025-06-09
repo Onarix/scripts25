@@ -1,5 +1,7 @@
 # Pzemysław Kubik
 
+Dema wszystkich aplikacji znajdują się w folderze `demos/` !
+
 **Zadanie 1** Tic Tac Toe
 
 :white_check_mark: 5.0: wszystkie wymagania:
