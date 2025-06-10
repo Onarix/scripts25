@@ -2,7 +2,7 @@
 
 Run app:
 ```bash
-cd mario-runner
+cd mario-phaser
 python -m http.server
 ```
 
