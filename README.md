@@ -52,3 +52,10 @@ Frontend wywołuje zapytania na odpowiedni adres (np. http://localhost:3001).
 
 CORS działa i jest skonfigurowany.
 #
+
+**Zadanie 3** Mario w PhaserJS
+:white_check_mark: 3.0 - Należy stworzyć jeden poziom z przeszkodami oraz dziurami w które
+można wpaść i zginąć
+
+
+#
