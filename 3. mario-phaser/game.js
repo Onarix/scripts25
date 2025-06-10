@@ -12,6 +12,7 @@ class MainScene extends Phaser.Scene {
         this.load.image('tiles', 'assets/tileset.png');
         this.load.spritesheet('player', 'assets/player.png', { frameWidth: TILE_SIZE / 2, frameHeight: TILE_SIZE });
         this.load.image('flag', 'assets/flag.png');
+        this.load.image('coin', 'assets/coin.png');
     }
 
     create() {
@@ -51,11 +52,27 @@ class MainScene extends Phaser.Scene {
             this.scene.restart();
         }, null, this);
 
+        // Coins
+        this.coin = this.physics.add.group({ allowGravity: false });
+        this.coin.create(4 * TILE_SIZE, LENGTH - TILE_SIZE * 5, 'coin').setScale(2).refreshBody();
+        this.coin.create(10 * TILE_SIZE, LENGTH - TILE_SIZE * 7, 'coin').setScale(2).refreshBody();
+        this.coin.create(15 * TILE_SIZE, LENGTH - TILE_SIZE * 5, 'coin').setScale(2).refreshBody();
+        this.physics.add.overlap(this.player, this.coin, this.collectCoin, null, this);
+
+        this.score = 0;
+        this.scoreText = this.add.text(16, 16, 'Punkty: 0', { fontSize: '24px', fill: '#fff' }).setScrollFactor(0);
+
         // Gravity/Collision
         this.physics.add.collider(this.player, this.platforms);
 
         // Keys
         this.cursors = this.input.keyboard.createCursorKeys();
+    }
+
+    collectCoin(player, coin) {
+        coin.destroy();
+        this.score += 10;
+        this.scoreText.setText('Punkty: ' + this.score);
     }
 
     update() {
