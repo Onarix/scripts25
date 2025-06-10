@@ -54,8 +54,9 @@ CORS działa i jest skonfigurowany.
 #
 
 **Zadanie 3** Mario w PhaserJS
+
 :white_check_mark: 3.0 - Należy stworzyć jeden poziom z przeszkodami oraz dziurami w które
 można wpaść i zginąć
-
+https://github.com/Onarix/scripts25/commit/cdd9d3d618ee82dc44a40fd9d1928b881ac93415
 
 #
