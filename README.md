@@ -71,3 +71,11 @@ https://github.com/Onarix/scripts25/commit/043a16b7726219066940f1a596b89e40c8472
 https://github.com/Onarix/scripts25/commit/81a1ab3e877b5ea94d15d44b672485a2b44f7041
 
 #
+
+**Zadanie 5** Tetris w Lua
+
+:white_check_mark: 3.0 - Postawowa wersja dekstopowa z obsługą na klawiaturze - minimum 4
+rodzaje klocków
+https://github.com/Onarix/scripts25/commit/0628cb6afd3b88a1b045da81f1bbd882df55080b
+
+#
