@@ -60,3 +60,11 @@ można wpaść i zginąć
 https://github.com/Onarix/scripts25/commit/cdd9d3d618ee82dc44a40fd9d1928b881ac93415
 
 #
+
+**Zadanie 4** Crawler w Ruby
+
+:white_check_mark: 3.0 -  Należy pobrać podstawowe dane o produktach (tytuł, cena), dowolna
+kategoria
+https://github.com/Onarix/scripts25/commit/043a16b7726219066940f1a596b89e40c8472a16
+
+#
