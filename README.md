@@ -67,4 +67,7 @@ https://github.com/Onarix/scripts25/commit/cdd9d3d618ee82dc44a40fd9d1928b881ac93
 kategoria
 https://github.com/Onarix/scripts25/commit/043a16b7726219066940f1a596b89e40c8472a16
 
+:white_check_mark: 3.5 -  Należy pobrać podstawowe dane o produktach wg słów kluczowych
+https://github.com/Onarix/scripts25/commit/81a1ab3e877b5ea94d15d44b672485a2b44f7041
+
 #
