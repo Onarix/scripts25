@@ -49,27 +49,38 @@ class AmazonParser
     @client = client
   end
 
-  def crawl_category(category_url, pages: 1, category_hint: nil)
+  def crawl_search(category: nil, keyword: nil, pages: 1)
     results = []
-    (2...(pages + 2)).each do |i|
-      url = page_url(category_url, i + 1)
+    (2...(pages + 2)).each do |page_num|  
+      url = build_search_url(category: category, keyword: keyword, page: page_num)
       html = @client.get(url)
       next unless html
 
       doc = Nokogiri::HTML(html)
-      results.concat(extract_list_results(doc).map { |r| r.merge(category: category_hint) })
+      results.concat(
+        extract_list_results(doc).map { |r| r.merge(category: category, keyword: keyword) }
+      )
     end
     results
   end
 
+  def crawl_keywords(keywords, pages: 1)
+    query = URI.encode_www_form_component(keywords)
+    base = "https://#{AMAZON_HOST}/s?k=#{query}"
+    crawl_category(base, pages: pages).map { |r| r.merge(keywords: keywords) }
+  end
+
   private
 
-  def page_url(base_url, page_number)
-    uri = URI(base_url)
-    params = URI.decode_www_form(uri.query.to_s).to_h
-    params['page'] = page_number.to_s
-    uri.query = URI.encode_www_form(params)
-    uri.to_s
+  def build_search_url(category: nil, keyword: nil, page: 1)
+    base = "https://www.amazon.com/s?"
+
+    params = []
+    params << "i=#{category}" if category
+    params << "k=#{URI.encode_www_form_component(keyword)}" if keyword
+    params << "page=#{page}" if page > 1
+
+    base + params.join("&")
   end
 
   def extract_list_results(doc)
@@ -113,16 +124,17 @@ end
 
 class CLI
   CATEGORIES = {
-    "electronics" => "https://www.amazon.com/s?i=electronics",
-    "books"       => "https://www.amazon.com/s?i=stripbooks",
-    "fashion"     => "https://www.amazon.com/s?i=fashion",
-    "toys"        => "https://www.amazon.com/s?i=toys-and-games"
+    "electronics" => "electronics",
+    "books"       => "stripbooks",
+    "fashion"     => "fashion",
+    "toys"        => "toys-and-games"
   }
 
   def self.run(argv)
     options = {
       pages: 1,
       category: nil,
+      keywords: nil,
       delay: 2.0
     }
 
@@ -131,6 +143,10 @@ class CLI
 
       opts.on('-c', '--category NAME', 'Nazwa kategorii (np. electronics, books). Jeśli brak – crawler przeszuka wszystkie.') do |v|
         options[:category] = v
+      end
+
+      opts.on('-k', '--keywords TEXT', 'Słowa kluczowe (np. "wireless headphones")') do |v|
+        options[:keywords] = v
       end
 
       opts.on('-p', '--pages N', Integer, 'Liczba stron do pobrania (domyślnie 1)') do |v|
@@ -163,9 +179,13 @@ class CLI
                               CATEGORIES
                             end
 
-    categories_to_process.each do |cat_name, cat_url|
-      logger.info "Przetwarzam kategorię: #{cat_name} (#{cat_url})"
-      basics = parser.crawl_category(cat_url, pages: options[:pages], category_hint: cat_name)
+    categories_to_process.each do |cat_name, cat_urlname|
+      logger.info "Przetwarzam kategorię: #{cat_name} (#{cat_urlname})"
+      basics = parser.crawl_search(
+        category: cat_urlname,
+        keyword: options[:keywords],
+        pages: options[:pages]
+      )
 
       puts "Znaleziono pozycji: #{basics.size}"
       basics.each_with_index do |rec, idx|
