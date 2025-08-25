@@ -28,6 +28,8 @@ function love.update(dt)
         return
     end
 
+    updateLineClear(dt)
+
     fallTimer = fallTimer + dt
     if fallTimer >= fallInterval then
         fallTimer = 0

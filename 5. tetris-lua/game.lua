@@ -3,7 +3,9 @@ Board.width = 10
 Board.height = 20
 Board.grid = {}
 local lume = require("lume")
-
+clearingLines = {}
+clearTimer = 0
+isClearing = false
 
 function Board:reset()
     self.grid = {}
@@ -91,23 +93,50 @@ function lockBlock()
 end
 
 function clearLines()
-    local y = Board.height
-    while y > 0 do
+    local fullLines = findFullLines()
+    if #fullLines > 0 then
+        startLineClear(fullLines)
+    end
+end
+
+function findFullLines()
+    local fullLines = {}
+    for y = 1, Board.height do
         local full = true
-        for x=1,Board.width do
+        for x = 1, Board.width do
             if Board.grid[y][x] == 0 then
                 full = false
                 break
             end
         end
         if full then
-            table.remove(Board.grid, y)
-            local newRow = {}
-            for i=1,Board.width do newRow[i]=0 end
-            table.insert(Board.grid, 1, newRow)
-            love.audio.play(sounds.line)
-        else
-            y = y - 1
+            table.insert(fullLines, y)
+        end
+    end
+    return fullLines
+end
+
+function startLineClear(lines)
+    clearingLines = lines
+    clearTimer = 0
+    isClearing = true
+    love.audio.play(sounds.line)
+end
+
+function updateLineClear(dt)
+    if isClearing then
+        clearTimer = clearTimer + dt
+        if clearTimer > 0.5 then -- czas animacji (0.5s)
+            -- faktyczne usuwanie linii
+            for _, y in ipairs(clearingLines) do
+                table.remove(Board.grid, y)
+                local newRow = {}
+                for i = 1, Board.width do newRow[i] = 0 end
+                table.insert(Board.grid, 1, newRow)
+            end
+
+            clearingLines = {}
+            isClearing = false
         end
     end
 end
@@ -123,7 +152,25 @@ function drawBoard()
     for y=1,Board.height do
         for x=1,Board.width do
             if Board.grid[y][x] ~= 0 then
-                love.graphics.setColor(0,1,0)
+                local isClearingLine = false
+                for _, cy in ipairs(clearingLines) do
+                    if cy == y then
+                        isClearingLine = true
+                        break
+                    end
+                end
+
+                if isClearingLine then
+                    -- miganie: biały/czerwony
+                    if math.floor(clearTimer * 10) % 2 == 0 then
+                        love.graphics.setColor(1, 1, 1)
+                    else
+                        love.graphics.setColor(1, 0, 0)
+                    end
+                else
+                    love.graphics.setColor(0, 1, 0)
+                end
+
                 love.graphics.rectangle("fill", (x-1)*30, (y-1)*30, 30, 30)
             end
         end
