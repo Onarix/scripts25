@@ -81,4 +81,7 @@ https://github.com/Onarix/scripts25/commit/0628cb6afd3b88a1b045da81f1bbd882df550
 :white_check_mark: 3.5 - Zapis i odczyt gier \
 https://github.com/Onarix/scripts25/commit/d798f6629c576d1346ca1dc50339570e9b9c5662
 
+:white_check_mark: 4.0 - Dodanie efektów dźwiękowych przy akcjach
+https://github.com/Onarix/scripts25/commit/e5752635336afdc2de9d1b86e4dc7bdb876c17d8
+
 #
