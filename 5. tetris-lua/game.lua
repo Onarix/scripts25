@@ -2,6 +2,7 @@ Board = {}
 Board.width = 10
 Board.height = 20
 Board.grid = {}
+local lume = require("lume")
 
 
 function Board:reset()
@@ -144,4 +145,35 @@ function checkGameOver()
             break
         end
     end
+end
+
+function saveGame()
+    local data = {
+        grid = Board.grid,
+        blockType = currentBlock,
+        currentRotation = currentRotation,
+        currentX = currentX,
+        currentY = currentY
+    }
+    local serialized = "return " .. lume.serialize(data)
+    love.filesystem.write("savegame.lua", serialized)
+    gameSaved = true
+end
+
+function loadGame()
+    if not love.filesystem.getInfo("savegame.lua") then
+        gameNoFile = true
+        return
+    end
+
+    local chunk = love.filesystem.load("savegame.lua")
+    local data = chunk() 
+
+    Board.grid             = data.grid
+    currentBlock           = data.blockType
+    currentRotation        = data.currentRotation
+    currentX               = data.currentX
+    currentY               = data.currentY
+
+    gameLoaded = true
 end
