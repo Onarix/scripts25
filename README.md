@@ -84,4 +84,7 @@ https://github.com/Onarix/scripts25/commit/d798f6629c576d1346ca1dc50339570e9b9c5
 :white_check_mark: 4.0 - Dodanie efektów dźwiękowych przy akcjach
 https://github.com/Onarix/scripts25/commit/e5752635336afdc2de9d1b86e4dc7bdb876c17d8
 
+:white_check_mark: 4.5 - Dodanie animacji przy zbijaniu klocków \
+https://github.com/Onarix/scripts25/commit/544a31ebc7966383ca2aad5d08c3b982ec425592
+
 #
