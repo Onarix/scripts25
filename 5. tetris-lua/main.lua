@@ -14,6 +14,13 @@ function love.load()
     gameSaved = false
     gameLoaded = false
     gameNoFile = false
+    sounds = {
+        rotate   = love.audio.newSource("sounds/rotate.wav", "static"),
+        drop     = love.audio.newSource("sounds/drop.wav", "static"),
+        line     = love.audio.newSource("sounds/lineclear.wav", "static"),
+        save     = love.audio.newSource("sounds/save.wav", "static"),
+        load     = love.audio.newSource("sounds/load.wav", "static"),
+    }
 end
 
 function love.update(dt)

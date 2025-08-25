@@ -59,6 +59,7 @@ function moveCurrentBlock(dx, dy)
             fallInterval = fallSpeed
             locked = false
             lockBlock()
+            love.audio.play(sounds.drop)
             spawnBlock()
             checkGameOver()
         end
@@ -71,6 +72,7 @@ function rotateBlock()
     if not checkCollision(0,0,nextRotation) then
         currentRotation = nextRotation
     end
+    love.audio.play(sounds.rotate)
 end
 
 function lockBlock()
@@ -103,6 +105,7 @@ function clearLines()
             local newRow = {}
             for i=1,Board.width do newRow[i]=0 end
             table.insert(Board.grid, 1, newRow)
+            love.audio.play(sounds.line)
         else
             y = y - 1
         end
@@ -158,6 +161,7 @@ function saveGame()
     local serialized = "return " .. lume.serialize(data)
     love.filesystem.write("savegame.lua", serialized)
     gameSaved = true
+    love.audio.play(sounds.save)
 end
 
 function loadGame()
@@ -176,4 +180,5 @@ function loadGame()
     currentY               = data.currentY
 
     gameLoaded = true
+    love.audio.play(sounds.load)
 end
