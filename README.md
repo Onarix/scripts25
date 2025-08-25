@@ -78,4 +78,7 @@ https://github.com/Onarix/scripts25/commit/81a1ab3e877b5ea94d15d44b672485a2b44f7
 rodzaje klocków
 https://github.com/Onarix/scripts25/commit/0628cb6afd3b88a1b045da81f1bbd882df55080b
 
+:white_check_mark: 3.5 - Zapis i odczyt gier
+[d798f6629c576d1346ca1dc50339570e9b9c5662](https://github.com/Onarix/scripts25/commit/d798f6629c576d1346ca1dc50339570e9b9c5662)
+
 #
