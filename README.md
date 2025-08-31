@@ -1,6 +1,7 @@
 # Pzemysław Kubik
 
 Dema wszystkich aplikacji znajdują się w folderze `demos/` !
+#
 
 **Zadanie 1** Tic Tac Toe
 
@@ -51,6 +52,8 @@ app.use(cors());
 Frontend wywołuje zapytania na odpowiedni adres (np. http://localhost:3001).
 
 CORS działa i jest skonfigurowany.
+
+Kod folder: 2.shopJS
 #
 
 **Zadanie 3** Mario w PhaserJS
@@ -59,6 +62,7 @@ CORS działa i jest skonfigurowany.
 można wpaść i zginąć
 https://github.com/Onarix/scripts25/commit/cdd9d3d618ee82dc44a40fd9d1928b881ac93415
 
+Kod folder: 3.mario-phaser
 #
 
 **Zadanie 4** Crawler w Ruby
@@ -70,6 +74,7 @@ https://github.com/Onarix/scripts25/commit/043a16b7726219066940f1a596b89e40c8472
 :white_check_mark: 3.5 -  Należy pobrać podstawowe dane o produktach wg słów kluczowych
 https://github.com/Onarix/scripts25/commit/81a1ab3e877b5ea94d15d44b672485a2b44f7041
 
+Kod folder: 4.ruby-crawler
 #
 
 **Zadanie 5** Tetris w Lua
@@ -87,4 +92,13 @@ https://github.com/Onarix/scripts25/commit/e5752635336afdc2de9d1b86e4dc7bdb876c1
 :white_check_mark: 4.5 - Dodanie animacji przy zbijaniu klocków \
 https://github.com/Onarix/scripts25/commit/544a31ebc7966383ca2aad5d08c3b982ec425592
 
+Kod folder: 5.tetris-lua
+#
+
+**Zadanie 6** Czatbot eSport LLM
+
+:white_check_mark: 5.0: wszystkie wymagania:
+https://github.com/Onarix/scripts25/commit/e9dde558f9f857861f1d358b5c3a7c37ef908895
+
+Kod folder: 6.python-esport-llm
 #
