@@ -16,25 +16,25 @@ gem install nokogiri optparse
 
 * Wszystkie kategorie (domyślnie 1 strona)
 ```bash
-ruby crawler.rb
+ruby amazon_crawler.rb
 ```
 
 * Kilka stron
 ```bash
-ruby crawler.rb --pages 3
+ruby amazon_crawler.rb --pages 3
 ```
 
 * Konkretna kategoria
 ```bash
-ruby crawler.rb --category electronics
+ruby amazon_crawler.rb --category electronics
 ```
 
 * Keyword
 ```bash
-ruby crawler.rb --keywords "wireless earbuds"
+ruby amazon_crawler.rb --keywords "wireless earbuds"
 ```
 
 * Kategoria + keyword
 ```bash
-ruby crawler.rb --category electronics --keywords "headphones"
+ruby amazon_crawler.rb --category electronics --keywords "headphones"
 ```
